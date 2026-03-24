@@ -150,3 +150,55 @@ body::before {
   50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
   100% { text-shadow: 0 0 6px rgba(255, 215, 0, 0.4); }
 }
+
+/* TAP GLOW */
+.tap-glow {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.25);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: tapFade 0.4s ease-out forwards;
+}
+
+@keyframes tapFade {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
+
+/* CROWN SHIMMER */
+.crown-shimmer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, gold, transparent);
+  opacity: 0.8;
+  border-radius: 20px;
+  animation: crownGlow 2s infinite ease-in-out;
+}
+
+@keyframes crownGlow {
+  0% { opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+/* HOVER RING */
+.hover-ring {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  transform: translate(-50%, -50%);
+  transition: 0.05s linear;
+  left: -9999px;
+  top: -9999px;
+}
