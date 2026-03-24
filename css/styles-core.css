@@ -19,6 +19,26 @@ html {
   scroll-behavior: smooth;
 }
 
+#gold-float-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: gold;
+    color: black;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+    z-index: 9999;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+  #gold-float-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 18px rgba(0,0,0,0.35);
+  }
+
 /* HEADER */
 #main-header {
   text-align: center;
