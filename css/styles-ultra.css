@@ -1,0 +1,177 @@
+/* ============================================================
+   ULTRA EFFECTS LAYER — particles, ripples, motion lighting,
+   confetti-ready zones, depth fields, parallax, tilt shadows
+   ============================================================ */
+
+
+/* === GLOBAL PARTICLE CONTAINER === */
+#particle-field {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -3;
+}
+
+/* PARTICLE STYLE (JS adds <div class="p">) */
+.p {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.9);
+  opacity: 0.9;
+  filter: blur(1px);
+  pointer-events: none;
+  animation: particleFloat 6s linear forwards;
+}
+
+/* FLOAT UP + FADE */
+@keyframes particleFloat {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+
+
+/* === RIPPLE FIELDS === */
+.ripple-field {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255, 215, 0, 0.5),
+    transparent 70%
+  );
+  transform: scale(0.1);
+  opacity: 0.7;
+  pointer-events: none;
+  animation: rippleExpand 0.7s ease-out forwards;
+}
+
+@keyframes rippleExpand {
+  0% { transform: scale(0.1); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+
+/* === MOVEMENT-REACTIVE GLOW FIELD (gyro-based) === */
+.motion-glow {
+  transition: box-shadow 0.15s ease-out;
+}
+
+.motion-glow.active {
+  box-shadow:
+    0 0 20px rgba(255,215,0,0.6),
+    0 0 60px rgba(255,215,0,0.3);
+}
+
+
+/* === PARALLAX FLOAT LAYER === */
+#parallax-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -4;
+}
+
+.parallax-bit {
+  position: absolute;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.2);
+  filter: blur(3px);
+  animation: parallaxFloat 12s infinite ease-in-out;
+}
+
+@keyframes parallaxFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateY(0); }
+}
+
+
+/* === SOFT DEPTH FIELD === */
+#depth-field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,215,0,0.05),
+    transparent 80%
+  );
+  z-index: -5;
+}
+
+
+/* === CARD TILT SHADOW (JS toggles .tilted) === */
+.card.tilted {
+  transform: rotate3d(var(--tiltX), var(--tiltY), 0, 6deg);
+  box-shadow:
+    calc(var(--tiltY) * 20px) calc(var(--tiltX) * -20px) 40px rgba(255, 215, 0, 0.4);
+  transition: transform 0.08s linear, box-shadow 0.1s linear;
+}
+
+
+/* === CONFETTI READY CONTAINER === */
+#confetti-zone {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px; height: 14px;
+  opacity: 0.9;
+  transform: rotate(0deg);
+  animation: confettiFall 3.5s linear forwards;
+}
+
+/* Confetti colours — gold palette */
+.confetti-g1 { background: #ffe680; }
+.confetti-g2 { background: #ffd700; }
+.confetti-g3 { background: #c9a200; }
+.confetti-g4 { background: #fff7d1; }
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-20px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+  }
+}
+
+
+/* === SHAKE EFFECT (for correct/wrong flip moments) === */
+.shake {
+  animation: shakeAnim 0.4s ease-out;
+}
+
+@keyframes shakeAnim {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+
+/* === ULTRA GLOW FOR SPECIAL MOMENTS === */
+.ultra-glow {
+  animation: ultraGlowPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes ultraGlowPulse {
+  0% { text-shadow: 0 0 8px gold; }
+  50% { text-shadow: 0 0 28px gold; }
+  100% { text-shadow: 0 0 8px gold; }
+}

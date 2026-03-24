@@ -1,0 +1,124 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/* HEADER */
+#main-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+  position: relative;
+}
+
+#title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: gold;
+}
+
+#tagline {
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+#header-divider {
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, gold, transparent);
+  margin: 20px auto 0;
+  border-radius: 20px;
+}
+
+/* CARD WRAPPER */
+#card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px 20px 60px;
+  position: relative;
+}
+
+/* CARD */
+.card {
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+/* CARD HOVER (desktop only) */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+  }
+}
+
+/* CARD CONTENT */
+.card-name {
+  font-size: 1.8rem;
+  color: gold;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card-vibe {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.card-power {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #ffc400;
+}
+
+.card-quote {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* BONUS QUOTES (initially hidden via JS) */
+.bonus-quotes {
+  margin-top: 15px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bonus-quotes p {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* FOOTER */
+#footer {
+  text-align: center;
+  padding: 20px 0 40px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}

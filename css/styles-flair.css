@@ -1,0 +1,152 @@
+/* ============================================================
+   GLOBAL FLAIR LAYER — glow, shimmer, sparkle, breathing, depth
+   ============================================================ */
+
+/* GOLD GLOW UTILITY */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* HEADER SHIMMER */
+#title {
+  position: relative;
+  overflow: hidden;
+}
+
+#title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  height: 100%;
+  width: 120%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255, 215, 0, 0.5),
+    transparent 60%
+  );
+  transform: skewX(-25deg);
+  animation: titleShimmer 6s infinite ease-in-out;
+}
+
+@keyframes titleShimmer {
+  0% { left: -120%; }
+  40% { left: 140%; }
+  100% { left: 140%; }
+}
+
+/* HEADER CROWN EFFECT (activated by JS) */
+#title.crowned::before {
+  content: "👑";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.2rem;
+  opacity: 0;
+  animation: crownDrop 0.6s forwards ease-out;
+}
+
+@keyframes crownDrop {
+  0% { transform: translate(-50%, -60px); opacity: 0; }
+  100% { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* BACKGROUND SPARKLE LAYER (particle container) */
+#sparkle-layer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* DEEP GLOW BACKDROP */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 215, 0, 0.1),
+    transparent 70%
+  );
+  z-index: -2;
+}
+
+/* CARD SHIMMER BORDER (JS toggles class) */
+.card.shimmering {
+  border-image: linear-gradient(90deg, gold, transparent, gold) 1;
+  animation: shimmerBorder 2.5s infinite linear;
+}
+
+@keyframes shimmerBorder {
+  0% { border-image: linear-gradient(90deg, transparent, gold) 1; }
+  50% { border-image: linear-gradient(90deg, gold, transparent) 1; }
+  100% { border-image: linear-gradient(90deg, transparent, gold) 1; }
+}
+
+/* CARD “BREATHING” ANIMATION */
+.card.breathe {
+  animation: cardBreath 6s infinite ease-in-out;
+}
+
+@keyframes cardBreath {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+/* FLOATING EMOJI ZONE */
+.card .emoji-float {
+  display: inline-block;
+  animation: floatEmoji 4s infinite ease-in-out;
+}
+
+@keyframes floatEmoji {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* TAP SHIMMER EFFECT */
+.tap-shimmer {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.7),
+    transparent 60%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.1);
+  animation: tapShimmerFade 0.6s forwards ease-out;
+}
+
+@keyframes tapShimmerFade {
+  0% { opacity: 0.6; transform: scale(0.1); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* CARD EDGE GLOW ACTIVATOR */
+.card.edge-glow {
+  box-shadow:
+    0 0 10px rgba(255, 215, 0, 0.6),
+    0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+/* HEADER GLOW PULSE */
+#main-header.glow-pulse {
+  animation: headerPulse 4s infinite ease-in-out;
+}
+
+@keyframes headerPulse {
+  0% { text-shadow: 0 0 6px rgba(255, 215, 0, 0.4); }
+  50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+  100% { text-shadow: 0 0 6px rgba(255, 215, 0, 0.4); }
+}
